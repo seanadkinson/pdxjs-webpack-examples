@@ -1,8 +1,6 @@
 
-var salutation = require('./salutations');
-
 function greet(who) {
-    alert(salutation + ", " + who);
+    alert("Hello, " + who);
 }
 
 module.exports = greet;
