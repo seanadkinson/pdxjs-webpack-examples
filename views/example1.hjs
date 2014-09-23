@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 1</title>
+</head>
+<body>
+    <h1>Example 1</h1>
+    <div id="content">
+        <input id="who" value="World"/>
+        <button id="greet">Greet</button>
+    </div>
+    <script src="/js/build/example1.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example {{example}}</title>
+</head>
+<body>
+    <h1>Example {{example}}</h1>
+    <div id="content"></div>
+    <script type=""
+</body>
+</html>
