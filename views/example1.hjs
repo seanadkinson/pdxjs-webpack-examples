@@ -2,13 +2,74 @@
 <html>
 <head>
     <title>Example 1</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/vendor/google-code-prettify/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/examples.css"/>
+    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/google-code-prettify/prettify.js"></script>
+    <script>
+        !function ($) {
+            $(function(){
+                window.prettyPrint && prettyPrint()
+            })
+        }(window.jQuery)
+    </script>
 </head>
 <body>
-    <h1>Example 1</h1>
-    <div id="content">
-        <input id="who" value="World"/>
-        <button id="greet">Greet</button>
+    <div class="container">
+        <h1>Simple Webpack Bundle: Hello World</h1>
+
+        <h3>main.js</h3>
+<pre class="prettyprint">
+var greet = require('./greet');
+document.getElementById('greet').onclick = function() {
+    var who = document.getElementById('who').value;
+    greet(who);
+};
+</pre>
+
+        <h3>greet.js</h3>
+<pre class="prettyprint">
+function greet(who) {
+    alert("Hello, " + who);
+}
+module.exports = greet;
+</pre>
+
+        <h3>example1.html</h3>
+<pre class="prettyprint">
+&lt;div id="content"&gt;
+    &lt;input id="who" value="World"/&gt;
+    &lt;button id="greet"&gt;Greet&lt;/button&gt;
+&lt;/div&gt;
+&lt;script src="/js/build/example1.js"&gt;&lt;/script&gt;
+</pre>
+
+        <p style="margin-top: 50px">Let's bundle this module together:</p>
+        <ul>
+            <li>Webpack can easily be installed from <code>npm</code>
+<pre class="prettyprint">
+    $ npm install -g webpack
+</pre>
+            </li>
+            <li>Provide webpack a configuration file <code>webpack.config.js</code>
+<pre class="prettyprint">
+module.exports = {
+    entry: './main.js',
+    output: {
+        filename: '../build/example1.js'
+    }
+};
+</pre>
+            </li>
+        </ul>
+
+        <h3>Live Code</h3>
+        <div id="content">
+            <input id="who" value="World"/>
+            <button id="greet">Greet</button>
+        </div>
+        <script src="/js/build/example1.js"></script>
     </div>
-    <script src="/js/build/example1.js"></script>
 </body>
 </html>

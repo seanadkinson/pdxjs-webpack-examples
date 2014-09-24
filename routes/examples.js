@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/1', function(req, res) {
-  res.render('example1');
+router.get(/\/(\d+)/, function(req, res) {
+  res.render('example' + req.params[0]);
 });
 
 module.exports = router;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CommonJS Refresher</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/vendor/google-code-prettify/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/examples.css"/>
+    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/google-code-prettify/prettify.js"></script>
+    <script>
+        !function ($) {
+            $(function(){
+                window.prettyPrint && prettyPrint()
+            })
+        }(window.jQuery)
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>CommonJS Refresher</h1>
+
+        <p>CommonJS modules can:</p>
+        <ul>
+            <li>Use <code>require()</code> to import other modules
+<pre class="prettyprint">
+    var dependency = require('../lib/myDependency.js');
+</pre>
+            </li>
+            <li>Set exported properties on the special <code>exports</code> object
+<pre class="prettyprint">
+    exports.myPublicProperty = "some value";
+</pre>
+            </li>
+            <li>Set the entire exports object on <code>module.exports</code>
+<pre class="prettyprint">
+    module.exports = function() { /* do something */ }
+</pre>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>
