@@ -1,6 +1,4 @@
 module.exports = {
-    target: "web",
-    debug: true,
     devtool: "source-map",
     entry: './main.js',
     output: {
