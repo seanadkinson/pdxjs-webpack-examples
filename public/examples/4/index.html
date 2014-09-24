@@ -23,10 +23,10 @@
     var cafe = require('./file.coffee');
 </pre>
 
-        <h3>jade-loader</h3>
-        <p>Compile your Jade templates, if you are into that kind of thing</p>
+        <h3>markdown-loader</h3>
+        <p>Automatically convert markdown to HTML!</p>
 <pre class="prettyprint">
-    var template = require('./template.jade');
+    var html = require("./README.md");
 </pre>
 
         <h3>jsx-loader</h3>
@@ -46,10 +46,11 @@
 </pre>
 
 
-        <!--<h3>Live Code</h3>-->
-        <div id="content">
-            <!--<input id="who" value="World"/>-->
-            <!--<button id="greet">Greet</button>-->
+        <div id="content" style="margin-top: 60px">
+            <p>Longer list of popular loaders:
+                <a href="http://webpack.github.io/docs/list-of-loaders.html" target="_blank">
+                    http://webpack.github.io/docs/list-of-loaders.html
+                </a></p>
         </div>
         <script src="./bundle.js"></script>
 
