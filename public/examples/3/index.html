@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 2</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Webpack Loaders</h1>
+
+        <p>Let's also get rid of this:</p>
+<pre class="prettyprint">
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/js/vendor/google-code-prettify/prettify.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/examples.css&quot;/&gt;
+</pre>
+
+        <p>Webpack has the notion of <code>loaders</code> that can pre-process many kinds of files, including CSS!</p>
+<pre class="prettyprint">
+    $ npm install --save css-loader
+    $ npm install --save style-loader
+</pre>
+
+        <p>Let's tell <code>webpack</code> to use these loaders when requiring a CSS file.</p>
+        <h3>webpack.config.js</h3>
+<pre class="prettyprint">
+module.exports = {
+    entry: './main.js',
+    output: {
+        filename: './bundle.js'
+    },
+    resolve: {
+        modulesDirectories: ['node_modules', 'bower_components'],
+        extensions: ['', '.js']
+    },
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style!css" }
+        ]
+    },
+    resolveLoader: {
+        moduleTemplates: ["*-webpack-loader", "*-web-loader", "*-loader", "*"]
+    }
+};
+</pre>
+
+        <p style="margin-top: 50px;">Add the dependencies to our <code>main.js</code> entry-point:</p>
+
+        <h3>main.js</h3>
+<pre class="prettyprint">
+var $ = require('jquery'),
+    prettify = require('../../js/vendor/google-code-prettify/prettify'),
+    greet = require('./greet');
+
+require('../../js/vendor/google-code-prettify/prettify.css');
+require('../../css/examples.css');
+
+$(function() {
+    $('#greet').click(function() {
+        var who = $('#who').val();
+        greet(who);
+    });
+    prettify.prettyPrint();
+});
+</pre>
+
+        <h3>Live Code</h3>
+        <div id="content">
+            <input id="who" value="World"/>
+            <button id="greet">Greet</button>
+        </div>
+        <script src="./bundle.js"></script>
+
+
+        <div class="btn-group pull-right">
+            <a href="../1" class="btn btn-lg btn-default">Previous Example</a>
+            <a href="../3" class="btn btn-lg btn-primary">Next Example</a>
+        </div>
+    </div>
+</body>
+</html>
