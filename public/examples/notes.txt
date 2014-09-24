@@ -1,6 +1,9 @@
 
+DONE
 - Multiple entry points
 - Common bundle **
+
+TODO?
 - inline image url
 - dev environment
  - source maps
