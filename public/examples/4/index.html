@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 4: Loaders Galore</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Loaders Galore</h1>
+
+        <p>Webpack is very well written and modular.  The chain of loaders need only end with
+        valid javascript, and literally anything can be <code>require</code>d!</p>
+
+        <h3>less-loader</h3>
+        <p>Compile LESS CSS at bundle-time</p>
+<pre class="prettyprint">
+    require('../css/styles.less');
+</pre>
+
+        <h3>coffee-loader</h3>
+        <p>Easily compile and include your coffeescript files</p>
+<pre class="prettyprint">
+    var cafe = require('./file.coffee');
+</pre>
+
+        <h3>jade-loader</h3>
+        <p>Compile your Jade templates, if you are into that kind of thing</p>
+<pre class="prettyprint">
+    var template = require('./template.jade');
+</pre>
+
+        <h3>jsx-loader</h3>
+        <p>Automatically parse your JSX syntax in our React components!  Also, no need to add the <code>/** @jsx React.DOM */</code>
+            comment at the top of the files</p>
+<pre class="prettyprint">
+    var React = require('react');
+    var UserPanel = require('./UserPanel.jsx');
+    React.renderComponent('body', &lt;UserPanel/&gt;);
+</pre>
+
+        <h3>url-loader</h3>
+        <p>Returns a URL to a resource, which can be used for links or images</p>
+<pre class="prettyprint">
+    var imageSrc = require('../img/logo.png');
+    $('img.logo').attr('src', imageSrc);
+</pre>
+
+
+        <!--<h3>Live Code</h3>-->
+        <div id="content">
+            <!--<input id="who" value="World"/>-->
+            <!--<button id="greet">Greet</button>-->
+        </div>
+        <script src="./bundle.js"></script>
+
+        <div class="btn-group pull-right">
+            <a href="../3" class="btn btn-lg btn-default">Previous Example</a>
+            <a href="../5" class="btn btn-lg btn-primary">Next Example</a>
+        </div>
+    </div>
+</body>
+</html>
