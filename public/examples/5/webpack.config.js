@@ -1,3 +1,6 @@
+
+var webpack = require("webpack");
+
 module.exports = {
     devtool: "source-map",
     entry: {
@@ -29,5 +32,8 @@ module.exports = {
     },
     resolveLoader: {
         moduleTemplates: ["*-webpack-loader", "*-web-loader", "*-loader", "*"]
-    }
+    },
+    plugins: [
+        //new webpack.optimize.CommonsChunkPlugin("bundle.common.js")
+    ]
 };
