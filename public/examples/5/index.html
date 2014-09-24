@@ -3,16 +3,51 @@
 <head>
     <title>Example 5: Complete Example</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/vendor/google-code-prettify/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/examples.css"/>
+    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/google-code-prettify/prettify.js"></script>
+    <script>
+        !function ($) {
+            $(function(){
+                window.prettyPrint && prettyPrint()
+            })
+        }(window.jQuery)
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Complete Example</h1>
 
-        <a href="./profile/" class="btn btn-lg btn-default">User Profile Entry</a>
-        <a href="./comments/" class="btn btn-lg btn-default">Comments List Entry</a>
+        <a href="./profile/" class="btn btn-lg btn-primary">User Profile Entry</a>
+        <a href="./comments/" class="btn btn-lg btn-primary">Comments List Entry</a>
+
+
+        <h3 style="margin-top: 50px">Multiple Entry Points</h3>
+        <p>Webpack is now creating two files for us, one for each of these pages</p>
+<pre class="prettyprint">
+    entry: {
+        comments: "./comments/main.js",
+        profile: "./profile/main.js"
+    },
+    output: {
+        path: "./build/",
+        filename: "bundle.[name].js"
+    },
+</pre>
+
+        <h3>Source Map Generation</h3>
+        <p>Generating source maps is easy with webpack</p>
+<pre class="prettyprint">
+    devtool: 'source-map'
+</pre>
+
+        <h3>But What's Wrong With This?</h3>
+        <p>The two bundles have a LOT of modules in common (e.g. bootstrap, jquery, react).  Can we fix that?</p>
 
         <div class="btn-group pull-right">
             <a href="../4" class="btn btn-lg btn-default">Previous Example</a>
+            <a href="../6" class="btn btn-lg btn-primary">Go To The End</a>
         </div>
     </div>
 </body>

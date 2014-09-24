@@ -7,4 +7,4 @@ require('bootstrap/dist/css/bootstrap.css');
 
 $(function() {
     React.renderComponent(UserProfile(), $('#react')[0]);
-})
+});
