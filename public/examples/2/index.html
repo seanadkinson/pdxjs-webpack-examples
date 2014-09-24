@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 2</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/vendor/google-code-prettify/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/examples.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Seamless Usage of node_modules</h1>
+
+        <p>Let's get rid of this:</p>
+<pre class="prettyprint">
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/js/vendor/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/js/vendor/google-code-prettify/prettify.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        !function ($) {
+            $(function(){
+                window.prettyPrint &amp;&amp; prettyPrint()
+            })
+        }(window.jQuery)
+    &lt;/script&gt;
+</pre>
+
+        <p>We can install <code>jquery</code> from <code>npm</code>:</p>
+<pre class="prettyprint">
+    $ npm install --save jquery
+</pre>
+        <p>This creates <code>/node_modules/jquery</code>, which is setup to export our familiar <code>$</code> function</p>
+
+        <p>When we write <code>require('jquery')</code> webpack looks in the following locations:</p>
+        <ul>
+            <li>./node_modules/jquery</li>
+            <li>../node_modules/jquery</li>
+            <li>../../node_modules/jquery</li>
+            <li>../../../node_modules/jquery</li>
+            <li>and so on...</li>
+        </ul>
+
+        <p>I prefer being explicit, so let's document this behavior in our <code>webpack.config.js</code></p>
+        <h3>webpack.config.js</h3>
+<pre class="prettyprint">
+module.exports = {
+    entry: './main.js',
+    output: {
+        filename: './bundle.js'
+    },
+    resolve: {
+        modulesDirectories: ['node_modules', 'bower_components'],
+        extensions: ['', '.js']
+    }
+};
+</pre>
+
+        <p style="margin-top: 50px;">Now we can rewrite <code>main.js</code>:</p>
+
+        <h3>main.js</h3>
+<pre class="prettyprint">
+var $ = require('jquery'),
+    prettify = require('../../js/vendor/google-code-prettify/prettify'),
+    greet = require('./greet');
+
+$(function() {
+    $('#greet').click(function() {
+        var who = $('#who').val();
+        greet(who);
+    });
+    prettify.prettyPrint();
+});
+</pre>
+
+        <p style="margin-top: 50px;">Let's upgrade <code>greet.js</code> to include a time:</p>
+<h3>greet.js</h3>
+<pre class="prettyprint">
+var moment = require('moment');
+function greet(who) {
+    alert("Hello, " + who + ", it is: " + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+}
+module.exports = greet;
+</pre>
+
+        <h3>Live Code</h3>
+        <div id="content">
+            <input id="who" value="World"/>
+            <button id="greet">Greet</button>
+        </div>
+        <script src="./bundle.js"></script>
+
+
+        <div class="btn-group pull-right">
+            <a href="../1" class="btn btn-lg btn-default">Previous Example</a>
+            <a href="../3" class="btn btn-lg btn-primary">Next Example</a>
+        </div>
+    </div>
+</body>
+</html>

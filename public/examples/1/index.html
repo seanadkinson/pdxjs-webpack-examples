@@ -36,15 +36,6 @@ function greet(who) {
 module.exports = greet;
 </pre>
 
-        <h3>example1.html</h3>
-<pre class="prettyprint">
-&lt;div id="content"&gt;
-    &lt;input id="who" value="World"/&gt;
-    &lt;button id="greet"&gt;Greet&lt;/button&gt;
-&lt;/div&gt;
-&lt;script src="/js/build/example1.js"&gt;&lt;/script&gt;
-</pre>
-
         <p style="margin-top: 50px">Let's bundle this module together:</p>
         <ul>
             <li>Webpack can easily be installed from <code>npm</code>
@@ -57,7 +48,7 @@ module.exports = greet;
 module.exports = {
     entry: './main.js',
     output: {
-        filename: '../build/example1.js'
+        filename: './bundle.js'
     }
 };
 </pre>
@@ -65,23 +56,40 @@ module.exports = {
             <li>Run <code>webpack</code> in the directory
 <pre class="prettyprint">
 $  webpack
-Hash: 5a45d32b95a624e878bd
+Hash: 9d08a0463630944c8e54
 Version: webpack 1.4.2
 Time: 29ms
-               Asset  Size  Chunks             Chunk Names
-../build/example1.js  1825       0  [emitted]  main
+      Asset  Size  Chunks             Chunk Names
+./bundle.js  1824       0  [emitted]  main
    [0] ./main.js 162 {0} [built]
-   [1] ./greet.js 78 {0} [built]
+   [1] ./greet.js 77 {0} [built]
 </pre>
             </li>
         </ul>
 
-        <h3>Live Code</h3>
+        <h3>Live Example</h3>
+
+        <h3>example1.html</h3>
+<pre class="prettyprint">
+&lt;div id="content"&gt;
+    &lt;input id="who" value="World"/&gt;
+    &lt;button id="greet"&gt;Greet&lt;/button&gt;
+&lt;/div&gt;
+&lt;script src="/examples/1/bundle.js"&gt;&lt;/script&gt;
+</pre>
+
         <div id="content">
             <input id="who" value="World"/>
             <button id="greet">Greet</button>
+            <script src="./bundle.js"></script>
         </div>
-        <script src="/js/build/example1.js"></script>
+
+
+        <div class="btn-group pull-right">
+            <a href="../0" class="btn btn-lg btn-default">Previous Example</a>
+            <a href="../2" class="btn btn-lg btn-primary">Next Example</a>
+        </div>
+
     </div>
 </body>
 </html>

@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Examples
 
-app.use('/examples', require('./routes/examples'));
 
 
 
