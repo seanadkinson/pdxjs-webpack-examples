@@ -10,4 +10,4 @@ $ npm install
 $ node bin/www
 ```
 
-Then open browser to http://localhost:3000/examples/0
+Then open browser to http://localhost:3000
