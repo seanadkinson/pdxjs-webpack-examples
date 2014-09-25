@@ -27,7 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Examples
-
+app.get('/', function(req, res) {
+    res.redirect('/intro/');
+});
 
 
 

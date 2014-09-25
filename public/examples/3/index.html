@@ -23,44 +23,44 @@
         <p>Let's tell <code>webpack</code> to use these loaders when requiring a CSS file.</p>
         <h3>webpack.config.js</h3>
 <pre class="prettyprint">
-module.exports = {
-    entry: './main.js',
-    output: {
-        filename: './bundle.js'
-    },
-    resolve: {
-        modulesDirectories: ['node_modules', 'bower_components'],
-        extensions: ['', '.js']
-    },
-    module: {
-        loaders: [
-            { test: /\.css$/, loader: "style!css" }
-        ]
-    },
-    resolveLoader: {
-        moduleTemplates: ["*-webpack-loader", "*-web-loader", "*-loader", "*"]
-    }
-};
+    module.exports = {
+        entry: './main.js',
+        output: {
+            filename: './bundle.js'
+        },
+        resolve: {
+            modulesDirectories: ['node_modules', 'bower_components'],
+            extensions: ['', '.js']
+        },
+        module: {
+            loaders: [
+                { test: /\.css$/, loader: "style!css" }
+            ]
+        },
+        resolveLoader: {
+            moduleTemplates: ["*-webpack-loader", "*-web-loader", "*-loader", "*"]
+        }
+    };
 </pre>
 
         <p style="margin-top: 50px;">Add the dependencies to our <code>main.js</code> entry-point:</p>
 
         <h3>main.js</h3>
 <pre class="prettyprint">
-var $ = require('jquery'),
-    prettify = require('../../js/vendor/google-code-prettify/prettify'),
-    greet = require('./greet');
+    var $ = require('jquery'),
+        prettify = require('../../js/vendor/google-code-prettify/prettify'),
+        greet = require('./greet');
 
-require('../../js/vendor/google-code-prettify/prettify.css');
-require('../../css/examples.css');
+    require('../../js/vendor/google-code-prettify/prettify.css');
+    require('../../css/examples.css');
 
-$(function() {
-    $('#greet').click(function() {
-        var who = $('#who').val();
-        greet(who);
+    $(function() {
+        $('#greet').click(function() {
+            var who = $('#who').val();
+            greet(who);
+        });
+        prettify.prettyPrint();
     });
-    prettify.prettyPrint();
-});
 </pre>
 
         <h3>Live Code</h3>

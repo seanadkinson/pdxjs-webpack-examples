@@ -41,44 +41,47 @@
         <p>I prefer being explicit, so let's document this behavior in our <code>webpack.config.js</code></p>
         <h3>webpack.config.js</h3>
 <pre class="prettyprint">
-module.exports = {
-    entry: './main.js',
-    output: {
-        filename: './bundle.js'
-    },
-    resolve: {
-        modulesDirectories: ['node_modules', 'bower_components'],
-        extensions: ['', '.js']
-    }
-};
+    module.exports = {
+        entry: './main.js',
+        output: {
+            filename: './bundle.js'
+        },
+        resolve: {
+            modulesDirectories: ['node_modules', 'bower_components'],
+            extensions: ['', '.js']
+        }
+    };
 </pre>
 
         <p style="margin-top: 50px;">Now we can rewrite <code>main.js</code>:</p>
 
         <h3>main.js</h3>
 <pre class="prettyprint">
-var $ = require('jquery'),
-    prettify = require('../../js/vendor/google-code-prettify/prettify'),
-    greet = require('./greet');
+    var $ = require('jquery'),
+        prettify = require('../../js/vendor/google-code-prettify/prettify'),
+        greet = require('./greet');
 
-$(function() {
-    $('#greet').click(function() {
-        var who = $('#who').val();
-        greet(who);
+    $(function() {
+        $('#greet').click(function() {
+            var who = $('#who').val();
+            greet(who);
+        });
+        prettify.prettyPrint();
     });
-    prettify.prettyPrint();
-});
 </pre>
 
         <p style="margin-top: 50px;">Let's upgrade <code>greet.js</code> to include a time.  <code>moment.js</code>
         is a wonderful library for working with dates</p>
+<pre class="prettyprint">
+    $ npm install --save moment
+</pre>
 <h3>greet.js</h3>
 <pre class="prettyprint">
-var moment = require('moment');
-function greet(who) {
-    alert("Hello, " + who + ", it is: " + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-}
-module.exports = greet;
+    var moment = require('moment');
+    function greet(who) {
+        alert("Hello, " + who + ", it is: " + moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+    }
+    module.exports = greet;
 </pre>
 
         <p class="alert alert-success" style="margin-top: 25px"><strong>Tip:</strong> Keep webpack monitoring files using <code>webpack --watch</code></p>

@@ -38,6 +38,19 @@
             </li>
         </ul>
 
+        <h2 style="margin-top: 60px">Simple Example</h2>
+        <h3>colors.js</h3>
+<pre class="prettyprint">
+    exports.sky = 'blue';
+    exports.grass = 'green';
+</pre>
+
+        <h3>main.js</h3>
+<pre class="prettyprint">
+    var colors = require('./colors.js');
+    console.log('The sky is: ' + colors.blue);
+</pre>
+
         <div class="btn-group pull-right">
             <a href="../1" class="btn btn-lg btn-primary">Next Example</a>
         </div>

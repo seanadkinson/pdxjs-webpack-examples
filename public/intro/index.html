@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intro: Webpack</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/vendor/google-code-prettify/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/examples.css"/>
+    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/google-code-prettify/prettify.js"></script>
+    <script>
+        !function ($) {
+            $(function(){
+                window.prettyPrint && prettyPrint()
+            })
+        }(window.jQuery)
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Webpack</h1>
+
+        <h3>Why Module Bundles?</h3>
+        <p>How many web pages look like this?</p>
+<pre class="prettyprint">
+&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/base.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/syntax.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/something.that.depends.on.jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/another.dependency.js&quot;&gt;&lt;/script&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/another.dependency.styles.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+&lt;/head&gt;
+</pre>
+
+        <p>This is bad for many reasons:</p>
+        <ul>
+            <li>Hard to maintain</li>
+            <li>Implicit dependencies instead of explicit</li>
+            <li>Inefficient loading</li>
+            <li>Dev environment typically different than production</li>
+        </ul>
+
+        <h3>There's A Better Way</h3>
+        <p>Bundle all the files together</p>
+<pre class="prettyprint">
+&lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+
+        <div id="content" style="margin-top: 60px">
+        </div>
+
+        <div class="btn-group pull-right">
+            <a href="../examples/0" class="btn btn-lg btn-primary">CommonJS Refresher</a>
+        </div>
+    </div>
+</body>
+</html>
