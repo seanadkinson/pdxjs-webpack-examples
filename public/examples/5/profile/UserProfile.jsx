@@ -1,11 +1,15 @@
 
-var React = require('react');
+var React = require('react'),
+    profilePic = require('../../../img/profile.png');
 
 var UserProfile = React.createClass({
 
     render: function() {
         return (
-            <h1>This is the user profile page</h1>
+            <div className="container">
+                <h1>User Profile Page</h1>
+                <img src={profilePic}/>
+            </div>
         );
     }
 
